@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himanshu Saini - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .gradient {
+      background: linear-gradient(to right, #6366f1, #3b82f6);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="gradient text-white p-10 shadow-lg">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-2" id="name"></h1>
+      <p class="text-lg" id="title"></p>
+      <p class="mt-2 text-sm" id="contact"></p>
+      <a href="/resume.pdf" download class="inline-block mt-4 bg-white text-indigo-600 px-4 py-2 rounded shadow hover:bg-indigo-100 transition">📄 Download Resume</a>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-6 space-y-12">
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🙋‍♂️ About Me</h2>
+      <p class="mt-2 leading-relaxed text-gray-700">I'm Himanshu Saini, a data-driven Product Manager and Decision Analyst with a knack for solving complex business problems using analytics and machine learning. With experience in the fintech domain and a strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🌟 Professional Summary</h2>
+      <p class="mt-2 leading-relaxed text-gray-700" id="summary"></p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🧠 Core Skills</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-700" id="skills"></div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">💼 Experience</h2>
+      <div class="space-y-6 mt-4" id="experience"></div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🚀 Projects</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-4" id="projects"></div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">📊 Case Studies</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-4" id="case-studies"></div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🎓 Education</h2>
+      <p class="mt-2 text-gray-700" id="education"></p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">📜 Certifications</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2" id="certifications"></ul>
+    </section>
+  </main>
+
+  <footer class="gradient text-white text-center text-sm p-6 mt-10">
+    © 2025 Himanshu Saini. Built with ❤️ and Tailwind CSS.
+  </footer>
+
+  <script>
+    const resume = {
+      name: "Himanshu Saini",
+      title: "Decision Analyst | Product Manager | Data Science Enthusiast",
+      contact: {
+        email: "your.email@example.com",
+        linkedin: "https://linkedin.com/in/yourprofile"
+      },
+      summary: "Data-focused professional with 1.5+ years of experience designing and deploying analytical solutions and predictive models in fintech. Skilled in Python, SQL, and machine learning with a strong track record in using data to drive product and business decisions.",
+      skills: [
+        "Predictive Modeling", "Python", "SQL", "EDA & Feature Engineering",
+        "Machine Learning", "Scikit-learn", "Pandas", "Product Metrics Analysis"
+      ],
+      experience: [
+        {
+          company: "ICICI BANK",
+          role: "Product Manager",
+          duration: "June 2023 - Present",
+          description: "Led full product lifecycle from development to deployment. Streamlined online transaction requests and improved customer experience through intuitive UI/UX.",
+          skills: ["Product Lifecycle Management", "User Experience Design", "Data-Driven Decision Making"]
+        },
+        {
+          company: "Cograd",
+          role: "Full Stack Developer Intern",
+          duration: "March 2022 - May 2022",
+          description: "Built a website from scratch using MERN stack. Developed backend APIs and implemented responsive frontend using React.",
+          skills: ["MERN Stack", "API Development", "Responsive Design"]
+        }
+      ],
+      projects: [
+        {
+          title: "Billing Application",
+          description: "Digitized billing process with market analytics and Excel-compatible import/export. Automated monthly GST reports.",
+          skills: ["MongoDB", "Express.js", "React", "Node.js"]
+        },
+        {
+          title: "Docking Automation",
+          description: "Developed automation for repetitive tasks in protein docking research. Boosted research efficiency by 95% for Alzheimer’s study.",
+          skills: ["Python", "Bioinformatics", "Linux", "Bash"]
+        }
+      ],
+      caseStudies: [
+        {
+          title: "User Retention Optimization",
+          description: "Redesigned onboarding funnel and implemented churn prediction ML model, increasing retention by 15%."
+        },
+        {
+          title: "Billing Platform Enhancement",
+          description: "Enhanced analytics and UX flow for billing app, raising monthly active users by 20%."
+        }
+      ],
+      education: "Bachelor of Technology, Motilal Nehru National Institute Of Technology Allahabad, CPI: 8.57/10 (2019 – 2023)",
+      certifications: [
+        "Certificate Program in Data Sciences in Banking",
+        "Python for Everybody Specialization"
+      ]
+    };
+
+    document.getElementById("name").innerText = resume.name;
+    document.getElementById("title").innerText = resume.title;
+    document.getElementById("contact").innerText = `${resume.contact.email} | ${resume.contact.linkedin}`;
+    document.getElementById("summary").innerText = resume.summary;
+
+    const skillsContainer = document.getElementById("skills");
+    resume.skills.forEach(skill => {
+      const div = document.createElement("div");
+      div.innerText = skill;
+      skillsContainer.appendChild(div);
+    });
+
+    const experienceContainer = document.getElementById("experience");
+    resume.experience.forEach(exp => {
+      const div = document.createElement("div");
+      div.className = "bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
+      div.innerHTML = `<h3 class="text-lg font-semibold">${exp.role} at ${exp.company}</h3><p class="text-sm text-gray-600 mb-2">${exp.duration}</p><p class="text-gray-700">${exp.description}</p><p class="text-xs text-indigo-500 mt-2">Skills: ${exp.skills.join(", ")}</p>`;
+      experienceContainer.appendChild(div);
+    });
+
+    const projectsContainer = document.getElementById("projects");
+    resume.projects.forEach(proj => {
+      const div = document.createElement("div");
+      div.className = "bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
+      div.innerHTML = `<h3 class="text-lg font-semibold">${proj.title}</h3><p class="text-gray-700 mt-2">${proj.description}</p><p class="text-xs text-indigo-500 mt-2">Skills: ${proj.skills.join(", ")}</p>`;
+      projectsContainer.appendChild(div);
+    });
+
+    const caseContainer = document.getElementById("case-studies");
+    resume.caseStudies.forEach(cs => {
+      const div = document.createElement("div");
+      div.className = "bg-white p-6 rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300";
+      div.innerHTML = `<h3 class="font-semibold text-lg">${cs.title}</h3><p class="text-gray-700 mt-2">${cs.description}</p>`;
+      caseContainer.appendChild(div);
+    });
+
+    document.getElementById("education").innerText = resume.education;
+
+    const certList = document.getElementById("certifications");
+    resume.certifications.forEach(cert => {
+      const li = document.createElement("li");
+      li.innerText = cert;
+      certList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

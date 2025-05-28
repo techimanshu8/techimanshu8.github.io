@@ -13,6 +13,31 @@
     .gradient {
       background: linear-gradient(to right, #6366f1, #3b82f6);
     }
+.timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #cbd5e0;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 30px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 13px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      background: #6366f1;
+      border-radius: 9999px;
+    }
+
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYSEL0RPYX"></script>
 <script>
@@ -36,7 +61,7 @@
   <main class="container mx-auto p-6 space-y-12">
     <section>
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🙋‍♂️ About Me</h2>
-      <p class="mt-2 leading-relaxed text-gray-700">I'm Himanshu Saini, a data-driven Product Manager and Decision Analyst with a knack for solving complex business problems using analytics and machine learning. With experience in the fintech domain and a strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
+      <p class="mt-2 leading-relaxed text-gray-700">Hi, I'm Himanshu Saini,Currently Working as a Product Manager in ICICI Bank having 2 years of experience in solving complex business problems using product analytics and machine learning. I have completed my Bachelor of Technology from MNNIT Allahabad.i Have strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
     </section>
 
     <section>
@@ -48,10 +73,10 @@
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🧠 Core Skills</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-700" id="skills"></div>
     </section>
-
+    
     <section>
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">💼 Experience</h2>
-      <div class="space-y-6 mt-4" id="experience"></div>
+      <div class="relative timeline mt-8 ml-4" id="experience"></div>
     </section>
 
     <section>
@@ -66,7 +91,7 @@
 
     <section>
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🎓 Education</h2>
-      <p class="mt-2 text-gray-700" id="education"></p>
+      <div class="mt-2 text-gray-700" id="education"></div>
     </section>
 
     <section>
@@ -76,28 +101,28 @@
   </main>
 
   <footer class="gradient text-white text-center text-sm p-6 mt-10">
-    © 2025 Himanshu Saini. Built with ❤️ and Tailwind CSS.
+    © 2025 Himanshu Saini.
   </footer>
 
   <script>
     const resume = {
       name: "Himanshu Saini",
-      title: "Decision Analyst | Product Manager | Data Science Enthusiast",
+      title: "Product Manager | Data Science Enthusiast",
       contact: {
-        email: "your.email@example.com",
-        linkedin: "https://linkedin.com/in/yourprofile"
+        email: "Himanshusaini9683@gmail.com",
+        linkedin: "https://www.linkedin.com/in/himanshu-saini2023"
       },
-      summary: "Data-focused professional with 1.5+ years of experience designing and deploying analytical solutions and predictive models in fintech. Skilled in Python, SQL, and machine learning with a strong track record in using data to drive product and business decisions.",
-      skills: [
+      summary: "Data-driven Product Manager with 2 years of experience delivering measurable impact across digital banking and SaaS domains. Proven track record of driving feature adoption, boosting retention, and scaling user engagement using insights from product analytics. Adept at prioritizing roadmaps, managing cross-functional teams, and optimizing user flows to reduce friction and increase activation. Technically fluent in MERN stack, Python, and SQL—bridging business goals with engineering execution.",
+      skills: ["Cross Functional Collabration", "Stakeholders Management","Data Analyst",
         "Predictive Modeling", "Python", "SQL", "EDA & Feature Engineering",
-        "Machine Learning", "Scikit-learn", "Pandas", "Product Metrics Analysis"
+        "Machine Learning", "Pandas", "Product Metrics Analysis"
       ],
       experience: [
         {
           company: "ICICI BANK",
           role: "Product Manager",
           duration: "June 2023 - Present",
-          description: "Led full product lifecycle from development to deployment. Streamlined online transaction requests and improved customer experience through intuitive UI/UX.",
+          description: " Handling Outward Remittance and Trade Finance Digital Solutions used across India by 45000+ Customers. Led full product lifecycle from development to deployment. Streamlined online transaction requests and improved customer experience through intuitive UI/UX.",
           skills: ["Product Lifecycle Management", "User Experience Design", "Data-Driven Decision Making"]
         },
         {
@@ -121,19 +146,32 @@
         }
       ],
       caseStudies: [
-        {
-          title: "User Retention Optimization",
-          description: "Redesigned onboarding funnel and implemented churn prediction ML model, increasing retention by 15%."
+        
+        {title: "Time is Money",
+          description:"This is true for everyone even for the customers, i had worked on this methodology and worked on most balenced UI/UX with the useful features at priority and reduced unneccesary no of clicks by autofilling request using machine learning and past data which evenually saves time."
         },
         {
-          title: "Billing Platform Enhancement",
-          description: "Enhanced analytics and UX flow for billing app, raising monthly active users by 20%."
+          title: "Save Paper, Save Trees",
+          description: "In the era of digital india who even wants to write and maintain documents , in response to this we had cut down physical documentations to minimum and automated documentation in digital mode which reduce errorness and need to mainain physical documents."
+        },
+        {
+          title: "Scalability is Profitability",
+          description : "We had one working model for one type of service, based on product insights and market fit we scaled the same solution for other services which eventually became key differenciater"
+        },
+        {
+          title: "User Onboarding Optimization",
+          description: "Redesigned onboarding system and implemented key features such as self onboarding, increasing userbase by 20%."
         }
       ],
-      education: "Bachelor of Technology, Motilal Nehru National Institute Of Technology Allahabad, CPI: 8.57/10 (2019 – 2023)",
+      education: {college:  "Motilal Nehru National Institute Of Technology Allahabad  (2019 - 2023)",
+      details: "Bachelor of Technology in Biotechnology, CPI 8.57/10 "
+
+      },
       certifications: [
         "Certificate Program in Data Sciences in Banking",
-        "Python for Everybody Specialization"
+        "Prompt Design in Vertex AI - Google Cloud",
+        "Python for Everybody Specialization",
+        "Certificate in International Trade Finance"
       ]
     };
 
@@ -145,6 +183,7 @@
     const skillsContainer = document.getElementById("skills");
     resume.skills.forEach(skill => {
       const div = document.createElement("div");
+      div.className = "bg-white p-4 rounded-lg shadow";
       div.innerText = skill;
       skillsContainer.appendChild(div);
     });
@@ -152,7 +191,7 @@
     const experienceContainer = document.getElementById("experience");
     resume.experience.forEach(exp => {
       const div = document.createElement("div");
-      div.className = "bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
+      div.className = " timeline-item bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
       div.innerHTML = `<h3 class="text-lg font-semibold">${exp.role} at ${exp.company}</h3><p class="text-sm text-gray-600 mb-2">${exp.duration}</p><p class="text-gray-700">${exp.description}</p><p class="text-xs text-indigo-500 mt-2">Skills: ${exp.skills.join(", ")}</p>`;
       experienceContainer.appendChild(div);
     });
@@ -173,7 +212,7 @@
       caseContainer.appendChild(div);
     });
 
-    document.getElementById("education").innerText = resume.education;
+    document.getElementById("education").innerHTML = `<h6 class="font-semibold text-lg">${resume.education.college}</h6> <p class="mt-2" > ${resume.education.details} </p>`;
 
     const certList = document.getElementById("certifications");
     resume.certifications.forEach(cert => {

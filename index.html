@@ -6,36 +6,67 @@
   <title>Himanshu Saini - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      background-attachment: fixed;
+      perspective: 1500px;
+    }
+     .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+    .card-3d:hover {
+      transform: rotateY(10deg) rotateX(5deg);
     }
     .gradient {
-      background: linear-gradient(to right, #6366f1, #3b82f6);
+      background: linear-gradient(to right, #7e57c2, #42a5f5);
     }
-.timeline::before {
-      content: "";
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
       position: absolute;
-      left: 20px;
+      left: 10px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #cbd5e0;
+      background: #7e57c2;
     }
     .timeline-item {
       position: relative;
-      padding-left: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
+      padding-left: 2.5rem;
+      transition: all 0.3s ease;
+      background: #ffffffee;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 1rem;
     }
     .timeline-item::before {
-      content: "";
+      content: '\f0b1';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
       position: absolute;
-      left: 13px;
-      top: 5px;
-      width: 14px;
-      height: 14px;
-      background: #6366f1;
-      border-radius: 9999px;
+      left: -18px;
+      top: 1rem;
+      color: #7e57c2;
+      font-size: 16px;
+    }
+    .timeline-item:hover {
+      transform: translateX(10px) scale(1.02);
     }
 
   </style>
@@ -59,9 +90,11 @@
   </header>
 
   <main class="container mx-auto p-6 space-y-12">
-    <section>
+    <section class="fade-in">
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🙋‍♂️ About Me</h2>
-      <p class="mt-2 leading-relaxed text-gray-700">Hi, I'm Himanshu Saini,Currently Working as a Product Manager in ICICI Bank having 2 years of experience in solving complex business problems using product analytics and machine learning. I have completed my Bachelor of Technology from MNNIT Allahabad.i Have strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
+      <div class="card-3d mt-2 p-4 bg-white rounded-lg shadow-md">
+      <p class="leading-relaxed text-gray-700">Hi, I'm Himanshu Saini,Currently Working as a Product Manager in ICICI Bank having 2 years of experience in solving complex business problems using product analytics and machine learning. I have completed my Bachelor of Technology from MNNIT Allahabad.i Have strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
+       </div>
     </section>
 
     <section>
@@ -74,9 +107,11 @@
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-700" id="skills"></div>
     </section>
     
-    <section>
+    <section class="fade-in">
       <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">💼 Experience</h2>
-      <div class="relative timeline mt-8 ml-4" id="experience"></div>
+      <div class="relative timeline mt-8 ml-4" id="experience">
+
+      </div>
     </section>
 
     <section>
@@ -122,7 +157,11 @@
           company: "ICICI BANK",
           role: "Product Manager",
           duration: "June 2023 - Present",
-          description: " Handling Outward Remittance and Trade Finance Digital Solutions used across India by 45000+ Customers. Led full product lifecycle from development to deployment. Streamlined online transaction requests and improved customer experience through intuitive UI/UX.",
+          description: `Handling Outward Remittance and Trade Finance Digital Solutions used across India by 45000+ Customers. <ul class="list-disc list-inside text-gray-700 mt-2">
+      <li>Increased digital adoption by 10% and transaction volume by 17% within 6 months.</li>
+      <li>Reduced user journey steps by 30% through UI/UX optimization and document decongestion.</li>
+      <li>Improved product usage by 50% using data analytics to refine KPIs and eliminate blockers.</li>
+    </ul>`,
           skills: ["Product Lifecycle Management", "User Experience Design", "Data-Driven Decision Making"]
         },
         {
@@ -176,9 +215,16 @@
     };
 
     document.getElementById("name").innerText = resume.name;
-    document.getElementById("title").innerText = resume.title;
+    document.getElementById("title").innerHTML = "<span id='typed'></span>";
     document.getElementById("contact").innerText = `${resume.contact.email} | ${resume.contact.linkedin}`;
     document.getElementById("summary").innerText = resume.summary;
+
+    new Typed('#typed', {
+      strings: [resume.title],
+      typeSpeed: 60,
+      backSpeed: 30,
+      loop: true
+    });
 
     const skillsContainer = document.getElementById("skills");
     resume.skills.forEach(skill => {
@@ -191,8 +237,8 @@
     const experienceContainer = document.getElementById("experience");
     resume.experience.forEach(exp => {
       const div = document.createElement("div");
-      div.className = " timeline-item bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
-      div.innerHTML = `<h3 class="text-lg font-semibold">${exp.role} at ${exp.company}</h3><p class="text-sm text-gray-600 mb-2">${exp.duration}</p><p class="text-gray-700">${exp.description}</p><p class="text-xs text-indigo-500 mt-2">Skills: ${exp.skills.join(", ")}</p>`;
+      div.className = " timeline-item shadow hover:scale-105 transform transition-transform duration-300";
+      div.innerHTML = `<h3 class="text-lg font-semibold">${exp.role} at ${exp.company}</h3><p class="text-sm text-gray-600 mb-2">${exp.duration}</p><p class="text-gray-700">${exp.description}</p><p class="text-xs text-indigo-500 mt-2"> <i class="fas fa-chart-line"></i>Skills: ${exp.skills.join(", ")}</p>`;
       experienceContainer.appendChild(div);
     });
 

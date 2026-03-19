@@ -1,271 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Himanshu Saini - Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      background-attachment: fixed;
-      perspective: 1500px;
-    }
-     .card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.8s;
-    }
-    .card-3d:hover {
-      transform: rotateY(10deg) rotateX(5deg);
-    }
-    .gradient {
-      background: linear-gradient(to right, #7e57c2, #42a5f5);
-    }
-    .fade-in {
-      animation: fadeIn 1s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: #7e57c2;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-      padding-left: 2.5rem;
-      transition: all 0.3s ease;
-      background: #ffffffee;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      padding: 1rem;
-    }
-    .timeline-item::before {
-      content: '\f0b1';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      position: absolute;
-      left: -18px;
-      top: 1rem;
-      color: #7e57c2;
-      font-size: 16px;
-    }
-    .timeline-item:hover {
-      transform: translateX(10px) scale(1.02);
-    }
-
-  </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYSEL0RPYX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WYSEL0RPYX');
-</script>
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="gradient text-white p-10 shadow-lg">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl font-bold mb-2" id="name"></h1>
-      <p class="text-lg" id="title"></p>
-      <p class="mt-2 text-sm" id="contact"></p>
-     <a href="./Himanshu_Saini_Resume_2025.pdf" download onclick="gtag('event', 'resume_download', { event_category: 'Engagement', event_label: 'Resume PDF' })"class="inline-block mt-4 bg-white text-indigo-600 px-4 py-2 rounded shadow hover:bg-indigo-100 transition">📄 Download Resume</a>
-     </div>
-  </header>
-
-  <main class="container mx-auto p-6 space-y-12">
-    <section class="fade-in">
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🙋‍♂️ About Me</h2>
-      <div class="card-3d mt-2 p-4 bg-white rounded-lg shadow-md">
-      <p class="leading-relaxed text-gray-700">Hi, I'm Himanshu Saini,Currently Working as a Product Manager in ICICI Bank having 2 years of experience in solving complex business problems using product analytics and machine learning. I have completed my Bachelor of Technology from MNNIT Allahabad.i Have strong technical foundation in Python, SQL, and predictive modeling, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen, and love for problem-solving to deliver user-first experiences and business value.</p>
-       </div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🌟 Professional Summary</h2>
-      <p class="mt-2 leading-relaxed text-gray-700" id="summary"></p>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🧠 Core Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-700" id="skills"></div>
-    </section>
-    
-    <section class="fade-in">
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">💼 Experience</h2>
-      <div class="relative timeline mt-8 ml-4" id="experience">
-
-      </div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🚀 Projects</h2>
-      <div class="grid md:grid-cols-2 gap-6 mt-4" id="projects"></div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">📊 Case Studies</h2>
-      <div class="grid md:grid-cols-2 gap-6 mt-4" id="case-studies"></div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">🎓 Education</h2>
-      <div class="mt-2 text-gray-700" id="education"></div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 border-b pb-2">📜 Certifications</h2>
-      <ul class="list-disc list-inside text-gray-700 mt-2" id="certifications"></ul>
-    </section>
-  </main>
-
-  <footer class="gradient text-white text-center text-sm p-6 mt-10">
-    © 2025 Himanshu Saini.
-  </footer>
-
-  <script>
-    const resume = {
-      name: "Himanshu Saini",
-      title: "Product Manager | Data Science Enthusiast",
-      contact: {
-        email: "Himanshusaini9683@gmail.com",
-        linkedin: "https://www.linkedin.com/in/himanshu-saini2023"
-      },
-      summary: "Data-driven Product Manager with 2 years of experience delivering measurable impact across digital banking and SaaS domains. Proven track record of driving feature adoption, boosting retention, and scaling user engagement using insights from product analytics. Adept at prioritizing roadmaps, managing cross-functional teams, and optimizing user flows to reduce friction and increase activation. Technically fluent in MERN stack, Python, and SQL—bridging business goals with engineering execution.",
-      skills: ["Cross Functional Collabration", "Stakeholders Management","Data Analyst",
-        "Predictive Modeling", "Python", "SQL", "EDA & Feature Engineering",
-        "Machine Learning", "Pandas", "Product Metrics Analysis"
-      ],
-      experience: [
-        {
-          company: "ICICI BANK",
-          role: "Product Manager",
-          duration: "June 2023 - Present",
-          description: `Handling Outward Remittance and Trade Finance Digital Solutions used across India by 45000+ Customers. <ul class="list-disc list-inside text-gray-700 mt-2">
-      <li>Increased digital adoption by 10% and transaction volume by 17% within 6 months.</li>
-      <li>Reduced user journey steps by 30% through UI/UX optimization and document decongestion.</li>
-      <li>Improved product usage by 50% using data analytics to refine KPIs and eliminate blockers.</li>
-    </ul>`,
-          skills: ["Product Lifecycle Management", "User Experience Design", "Data-Driven Decision Making"]
-        },
-        {
-          company: "Cograd",
-          role: "Full Stack Developer Intern",
-          duration: "March 2022 - May 2022",
-          description: "Built a website from scratch using MERN stack. Developed backend APIs and implemented responsive frontend using React.",
-          skills: ["MERN Stack", "API Development", "Responsive Design"]
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Saini | Premium Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      ],
-      projects: [
-        {
-          title: "Billing Application",
-          description: "Digitized billing process with market analytics and Excel-compatible import/export. Automated monthly GST reports.",
-          skills: ["MongoDB", "Express.js", "React", "Node.js"]
-        },
-        {
-          title: "Docking Automation",
-          description: "Developed automation for repetitive tasks in protein docking research. Boosted research efficiency by 95% for Alzheimer’s study.",
-          skills: ["Python", "Bioinformatics", "Linux", "Bash"]
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            height: 100%;
+            overflow: hidden; /* Hide main scrollbar */
         }
-      ],
-      caseStudies: [
+
+        /* Sticky Bar with Glassmorphism */
+        .sticky-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-title {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #a0a0a0;
+            text-transform: uppercase;
+        }
+        .brand-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .contact-link {
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .contact-link:hover {
+            color: #ffffff;
+        }
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        /* Full Screen Scroll Snapping Container */
+        .container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Individual Slides */
+        .slide {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Dynamic Backgrounds Setup */
+        .slide-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #0a0a0a; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* FIXED: Changed to positive z-index so it doesn't hide behind the body background */
+            z-index: 1; 
+            
+            transform: scale(1.02);
+            transition: transform 10s ease-out;
+        }
+        .slide.is-visible .slide-bg {
+            transform: scale(1); /* Slow zoom-out effect on active slide */
+        }
+        .slide::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            
+            /* FIXED: Slightly lighter gradient so the image is fully visible while text pops */
+            background: linear-gradient(135deg, rgba(8,8,8,0.7) 0%, rgba(15,15,15,0.4) 100%);
+            
+            /* FIXED: Overlay sits directly above the image */
+            z-index: 2; 
+            pointer-events: none;
+        }
+
+        /* Two-Column Floating Content Wrapper */
+        .content-wrapper {
+            /* FIXED: Ensure content sits above the new background z-indexes */
+            position: relative;
+            z-index: 3; 
+
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 4rem;
+            max-width: 1200px;
+            width: 90%;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.02);
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4rem;
+            
+            /* Initial Hidden State for Animation */
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Left Column: Headings */
+        .left-col {
+            flex: 1;
+            text-align: right;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding-right: 4rem;
+        }
+
+        /* Right Column: Details */
+        .right-col {
+            flex: 1.8;
+            text-align: left;
+        }
+
+        /* Typography */
+        .left-col h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #ffffff 0%, #777777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: capitalize;
+        }
+
+        .right-col h2 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
         
-        {title: "Time is Money",
-          description:"This is true for everyone even for the customers, i had worked on this methodology and worked on most balenced UI/UX with the useful features at priority and reduced unneccesary no of clicks by autofilling request using machine learning and past data which evenually saves time."
-        },
-        {
-          title: "Save Paper, Save Trees",
-          description: "In the era of digital india who even wants to write and maintain documents , in response to this we had cut down physical documentations to minimum and automated documentation in digital mode which reduce errorness and need to mainain physical documents."
-        },
-        {
-          title: "Scalability is Profitability",
-          description : "We had one working model for one type of service, based on product insights and market fit we scaled the same solution for other services which eventually became key differenciater"
-        },
-        {
-          title: "User Onboarding Optimization",
-          description: "Redesigned onboarding system and implemented key features such as self onboarding, increasing userbase by 20%."
+        .right-col .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-      ],
-      education: {college:  "Motilal Nehru National Institute Of Technology Allahabad  (2019 - 2023)",
-      details: "Bachelor of Technology in Biotechnology, CPI 8.57/10 "
 
-      },
-      certifications: [
-        "Certificate Program in Data Sciences in Banking",
-        "Prompt Design in Vertex AI - Google Cloud",
-        "Python for Everybody Specialization",
-        "Certificate in International Trade Finance"
-      ]
-    };
+        .right-col p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cccccc;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
 
-    document.getElementById("name").innerText = resume.name;
-    document.getElementById("title").innerHTML = "<span id='typed'></span>";
-    document.getElementById("contact").innerText = `${resume.contact.email} | ${resume.contact.linkedin}`;
-    document.getElementById("summary").innerText = resume.summary;
+        .right-col ul {
+            list-style: none;
+        }
 
-    new Typed('#typed', {
-      strings: [resume.title],
-      typeSpeed: 60,
-      backSpeed: 30,
-      loop: true
-    });
+        .right-col ul li {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cccccc;
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
 
-    const skillsContainer = document.getElementById("skills");
-    resume.skills.forEach(skill => {
-      const div = document.createElement("div");
-      div.className = "bg-white p-4 rounded-lg shadow";
-      div.innerText = skill;
-      skillsContainer.appendChild(div);
-    });
+        .right-col ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
 
-    const experienceContainer = document.getElementById("experience");
-    resume.experience.forEach(exp => {
-      const div = document.createElement("div");
-      div.className = " timeline-item shadow hover:scale-105 transform transition-transform duration-300";
-      div.innerHTML = `<h3 class="text-lg font-semibold">${exp.role} at ${exp.company}</h3><p class="text-sm text-gray-600 mb-2">${exp.duration}</p><p class="text-gray-700">${exp.description}</p><p class="text-xs text-indigo-500 mt-2"> <i class="fas fa-chart-line"></i>Skills: ${exp.skills.join(", ")}</p>`;
-      experienceContainer.appendChild(div);
-    });
+        .highlight {
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
 
-    const projectsContainer = document.getElementById("projects");
-    resume.projects.forEach(proj => {
-      const div = document.createElement("div");
-      div.className = "bg-white p-6 rounded-lg shadow hover:scale-105 transform transition-transform duration-300";
-      div.innerHTML = `<h3 class="text-lg font-semibold">${proj.title}</h3><p class="text-gray-700 mt-2">${proj.description}</p><p class="text-xs text-indigo-500 mt-2">Skills: ${proj.skills.join(", ")}</p>`;
-      projectsContainer.appendChild(div);
-    });
+        /* Intersection Observer Active State */
+        .slide.is-visible .content-wrapper {
+            opacity: 1;
+            transform: translateY(0);
+            /* Triggers endless floating animation after sliding in */
+            animation: float 6s ease-in-out infinite alternate 1.2s;
+        }
 
-    const caseContainer = document.getElementById("case-studies");
-    resume.caseStudies.forEach(cs => {
-      const div = document.createElement("div");
-      div.className = "bg-white p-6 rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300";
-      div.innerHTML = `<h3 class="font-semibold text-lg">${cs.title}</h3><p class="text-gray-700 mt-2">${cs.description}</p>`;
-      caseContainer.appendChild(div);
-    });
+        /* Endless Floating Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
 
-    document.getElementById("education").innerHTML = `<h6 class="font-semibold text-lg">${resume.education.college}</h6> <p class="mt-2" > ${resume.education.details} </p>`;
+        /* Mobile View Responsive Tweaks */
+        @media (max-width: 900px) {
+            .content-wrapper {
+                padding: 3rem 2rem;
+                gap: 2rem;
+            }
+            .left-col {
+                padding-right: 2rem;
+            }
+            .left-col h1 {
+                font-size: 2.8rem;
+            }
+            .right-col h2 {
+                font-size: 1.8rem;
+            }
+        }
 
-    const certList = document.getElementById("certifications");
-    resume.certifications.forEach(cert => {
-      const li = document.createElement("li");
-      li.innerText = cert;
-      certList.appendChild(li);
-    });
-  </script>
+        @media (max-width: 768px) {
+            .sticky-bar { 
+                padding: 1rem 1.5rem; 
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .brand-left {
+                align-items: center;
+            }
+            .brand-name { font-size: 1.1rem; }
+            .brand-title { font-size: 0.65rem; }
+            .brand-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .contact-link { font-size: 0.75rem; }
+            
+            .content-wrapper {
+                flex-direction: column; /* Stacks to 1 column on mobile */
+                gap: 1.5rem;
+                padding: 2.5rem 1.5rem;
+                text-align: center;
+                margin-top: 5rem; /* Account for taller sticky header */
+            }
+
+            .left-col {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Divider moves to bottom */
+                padding-right: 0;
+                padding-bottom: 1.5rem;
+                text-align: center; /* Centers heading on mobile */
+                width: 60%;
+            }
+
+            .left-col h1 {
+                font-size: 2rem; /* Smaller font on mobile as requested */
+                background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .right-col {
+                text-align: center; /* Centers details on mobile */
+                width: 100%;
+            }
+
+            .right-col ul li {
+                padding-left: 0;
+            }
+            .right-col ul li::before {
+                display: none; /* Hide bullets on mobile centered view */
+            }
+            
+            .right-col h2 { font-size: 1.6rem; }
+            .right-col .subtitle { font-size: 0.9rem; }
+            .right-col p, .right-col ul li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header (Generated Dynamically) -->
+    <header class="sticky-bar" id="header-container"></header>
+
+    <!-- Scroll Container (Generated Dynamically) -->
+    <div class="container" id="slides-container"></div>
+
+    <!-- JavaScript for Dynamic Rendering and Animations -->
+    <script>
+        // ==========================================
+        // 📁 PORTFOLIO JSON DATA
+        // Edit this section to change website content!
+        // ==========================================
+        const portfolioData = {
+            header: {
+                name: "Himanshu Saini",
+                title: "Software Product Manager",
+                email: "himanshusaini9683@gmail.com",
+                linkedin: "https://linkedin.com/in/himanshu-saini2023",
+                phone: "Alwar, Rajasthan"
+            },
+            slides: [
+                {
+                    id: "hero",
+                    bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Himanshu<br>Saini",
+                    rightContent: `
+                        <h2>Product Manager</h2>
+                        <div class="subtitle">Data-Driven & User-First</div>
+                        <p>Hi, I'm Himanshu Saini. With 3 years of experience in buidling Trade Finance Digital Solutions and solving complex business problems using product analytics in digital banking, Graduated from <strong> MNNIT Allahabad</strong>, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen (MERN, Python, SQL), and a love for problem-solving to deliver measurable impact and business value.</p>
+                    `
+                },
+                {
+                    id: "exp1",
+                    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Experience",
+                    rightContent: `
+                        <h2>ICICI Bank </h2>
+                        <div class="subtitle">Product Manager | June 2023 - Present</div>
+                        <ul>
+                            <li>Building Outward Remittance and Trade Finance Digital Solutions used across India by 45,000+ Customers.</li>
+                            <li>Launched initiatives that led to 10% increase in digital engagement and 17% growth in transaction volume.</li>
+                            <li>Improved feature adoption by 12% and reduced drop-off rate by 30% through onboarding UX revamp and funnel optimization using strategy building.</li>
+                            <li>Automated manual work for High volume transactions via ERP integration with H2H setup and file upload method.</li>
+                            <li> Integrated Google Analytics to monitor product health metrics like MAUs, churn and conversion rates. </li>
+                        </ul>
+                    `
+                },
+                {
+                    id: "exp2",
+                    bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Experience",
+                    rightContent: `
+                        <h2>Cograd</h2>
+                        <div class="subtitle">Full Stack Developer Intern | Mar 2022 - May 2022</div>
+                        <p>Built a comprehensive web platform from scratch using the MERN stack. Developed complex backend APIs and implemented a highly responsive frontend using React, bridging business goals with seamless engineering execution.</p>
+                    `
+                },
+                {
+                    id: "skills",
+                    bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Core<br>Skills",
+                    rightContent: `
+                        <ul>
+                            <li><span class="highlight">Product Management:</span> Cross-Functional Collaboration, Stakeholder Management, Feature Prioritization, Product Metrics Analysis, KPI & Funnel Analysis</li>
+                            <li><span class="highlight">Data Science:</span> Predictive Modeling, Machine Learning, EDA & Feature Engineering</li>
+                            <li><span class="highlight">Technical Stack:</span> Jira ,Advance Excel, Figma, Postman, Google Analytics, Python, SQL, Pandas, MERN Stack (MongoDB, Express, React, Node)</li>
+                            <li><span class="highlight" >Others:</span> Problem-Solving, Agile/Scrum, A/B Testing, API Testing, User-Acceptance-Testing</li>
+                        </ul>
+                    `
+                },
+                                {
+                    id: "edu",
+                    bgImage: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Education",
+                    rightContent: `
+                        <h2>MNNIT Allahabad</h2>
+                        <div class="subtitle">B.Tech in Biotechnology | 2019 - 2023</div>
+                        <p><strong>CPI: 8.57 / 10</strong></p>
+                        <p>Cultivated a strong mathematical and technical foundation, applying analytical research methodologies to modern, data-driven software architecture.</p>
+                    `
+                },
+                {
+                    id: "projects",
+                    bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Key<br>Projects",
+                    rightContent: `
+                        <h2>AI Powerd Ecommerce App:</h2>
+                        <p>Built a Flipkart-clone shopping app with an AI-powered virtual trial room enabling users to try clothes on themselves before buying, improving purchase confidence and decision-making.</p>
+                        <br>
+                        <h2>Docking Automation (Bioinformatics + ML)</h2>
+                        <p>Automated 95%of manual workflows and implemented Python-based models to predict compound interaction, effectiveness, solubility and other features to find cure of Alzheimer.</p>
+                    `
+                },
+                {
+                    id: "casestudies",
+                    bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Case<br>Studies",
+                    rightContent: `
+                        <ul>
+                            <li><span class="highlight">Time is Money:</span> Reduced unnecessary clicks by autofilling requests via machine learning and historical data, significantly saving customer time.</li>
+                            <li><span class="highlight">Save Paper, Save Trees:</span> Cut down physical documentation to a minimum by automating digital modes, reducing errors and physical maintenance.</li>
+                            <li><span class="highlight">Scalability is Profitability:</span> Based on product insights and market fit, scaled a successful single-service model to other domains to create a key differentiator.</li>
+                            <li><span class="highlight">User Onboarding Optimization:</span> Redesigned onboarding with self-onboarding capabilities, increasing the active userbase by 20%.</li>
+                        </ul>
+                    `
+                },
+                {
+                    id: "certs",
+                    bgImage: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=2000&q=80",
+                    leftTitle: "Licenses &<br>Certs",
+                    rightContent: `
+                        <ul>
+                            <li><span class="highlight">Certificate Program in Data Sciences in Banking</span></li>
+                            <li><span class="highlight">Prompt Design in Vertex AI</span> - Google Cloud</li>
+                            <li><span class="highlight">Python for Everybody Specialization</span></li>
+                            <li><span class="highlight">Certificate in International Trade Finance</span></li>
+                        </ul>
+                    `
+                }
+
+            ]
+        };
+
+        // ==========================================
+        // ⚙️ RENDERING ENGINE & ANIMATIONS
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Render Header
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = `
+                <div class="brand-left">
+                    <div class="brand-name">${portfolioData.header.name}</div>
+                    <div class="brand-title">${portfolioData.header.title}</div>
+                </div>
+                <div class="brand-right">
+                    <a href="mailto:${portfolioData.header.email}" class="contact-link">himanshusaini9683@gmail.com</a>
+                    <a href="${portfolioData.header.linkedin}" target="_blank" class="contact-link">LinkedIn</a>
+                    <span href="blank" class="contact-link">${portfolioData.header.phone}</span>
+                </div>
+            `;
+
+            // 2. Render Slides
+            const slidesContainer = document.getElementById('slides-container');
+            
+            portfolioData.slides.forEach(slideData => {
+                const slideHTML = `
+                    <section class="slide" id="${slideData.id}">
+                        <div class="slide-bg" style="background-image: url('${slideData.bgImage}');"></div>
+                        <div class="content-wrapper">
+                            <div class="left-col">
+                                <h1>${slideData.leftTitle}</h1>
+                            </div>
+                            <div class="right-col">
+                                ${slideData.rightContent}
+                            </div>
+                        </div>
+                    </section>
+                `;
+                slidesContainer.insertAdjacentHTML('beforeend', slideHTML);
+            });
+
+            // 3. Initialize Animations (Intersection Observer)
+            const slides = document.querySelectorAll('.slide');
+            const observerOptions = {
+                root: slidesContainer,
+                threshold: 0.55 // Triggers when 55% of the slide is in view
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Reset animation when scrolling away
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+        });
+    </script>
 </body>
 </html>

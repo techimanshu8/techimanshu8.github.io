@@ -338,6 +338,14 @@
             .right-col p, .right-col ul li { font-size: 1rem; }
         }
     </style>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYSEL0RPYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WYSEL0RPYX');
+</script>
 </head>
 <body>
 
@@ -477,8 +485,8 @@
                     <div class="brand-title">${portfolioData.header.title}</div>
                 </div>
                 <div class="brand-right">
-                    <a href="mailto:${portfolioData.header.email}" class="contact-link">himanshusaini9683@gmail.com</a>
-                    <a href="${portfolioData.header.linkedin}" target="_blank" class="contact-link">LinkedIn</a>
+                    <a href="mailto:${portfolioData.header.email}" class="contact-link" onclick="gtag('event', 'email_click', { event_category: 'Engagement', event_label: 'Email Click' })">himanshusaini9683@gmail.com</a>
+                    <a href="${portfolioData.header.linkedin}" target="_blank" class="contact-link" onclick="gtag('event', 'linkedin_click', { event_category: 'Engagement', event_label: 'LinkedIn Visit' })">LinkedIn</a>
                     <span href="blank" class="contact-link">${portfolioData.header.phone}</span>
                 </div>
             `;
@@ -514,6 +522,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
+                        gtag('event', 'page_view', { event_category: 'Engagement', event_label: `Viewed Slide: ${entry.target.id}` });
                     } else {
                         // Reset animation when scrolling away
                         entry.target.classList.remove('is-visible');

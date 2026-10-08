@@ -11,342 +11,142 @@
     <meta property="og:description" content="Himanshu Saini's  Digtial portfolio showcasing his experience as a Software Product Manager at ICICI Bank, skills in product management and data science, education at MNNIT Allahabad, and key projects.">
     <meta property="og:url" content="https://techimanshu8.github.io/">  
     <meta property="og:type" content="website">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Global Reset & Typography */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #050505;
-            color: #ffffff;
-            height: 100%;
-            overflow: hidden; /* Hide main scrollbar */
-        }
-
-        /* Sticky Bar with Glassmorphism */
-        .sticky-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 4rem;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        .brand-left {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .brand-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: linear-gradient(120deg, #ffffff, #888888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .brand-title {
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #a0a0a0;
-            text-transform: uppercase;
-        }
-        .brand-right {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        .contact-link {
-            font-weight: 300;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: #b0b0b0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        .contact-link:hover {
-            color: #ffffff;
-        }
-        .contact-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: #ffffff;
-            transition: width 0.3s ease;
-        }
-        .contact-link:hover::after {
-            width: 100%;
-        }
-
-        /* Full Screen Scroll Snapping Container */
-        .container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        /* Individual Slides */
-        .slide {
-            height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Dynamic Backgrounds Setup */
-        .slide-bg {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #0a0a0a; 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-            /* FIXED: Changed to positive z-index so it doesn't hide behind the body background */
-            z-index: 1; 
-            
-            transform: scale(1.02);
-            transition: transform 10s ease-out;
-        }
-        .slide.is-visible .slide-bg {
-            transform: scale(1); /* Slow zoom-out effect on active slide */
-        }
-        .slide::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            
-            /* FIXED: Slightly lighter gradient so the image is fully visible while text pops */
-            background: linear-gradient(135deg, rgba(8,8,8,0.7) 0%, rgba(15,15,15,0.4) 100%);
-            
-            /* FIXED: Overlay sits directly above the image */
-            z-index: 2; 
-            pointer-events: none;
-        }
-
-        /* Two-Column Floating Content Wrapper */
-        .content-wrapper {
-            /* FIXED: Ensure content sits above the new background z-indexes */
-            position: relative;
-            z-index: 3; 
-
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 4rem;
-            max-width: 1200px;
-            width: 90%;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.02);
-            
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 4rem;
-            
-            /* Initial Hidden State for Animation */
-            opacity: 0;
-            transform: translateY(80px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Left Column: Headings */
-        .left-col {
-            flex: 1;
-            text-align: right;
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-            padding-right: 4rem;
-        }
-
-        /* Right Column: Details */
-        .right-col {
-            flex: 1.8;
-            text-align: left;
-        }
-
-        /* Typography */
-        .left-col h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
-            line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 0%, #777777 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: capitalize;
-        }
-
-        .right-col h2 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-        
-        .right-col .subtitle {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #a0a0a0;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .right-col p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #cccccc;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-
-        .right-col ul {
-            list-style: none;
-        }
-
-        .right-col ul li {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #cccccc;
-            font-weight: 300;
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .right-col ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .highlight {
-            color: #ffffff;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* Intersection Observer Active State */
-        .slide.is-visible .content-wrapper {
-            opacity: 1;
-            transform: translateY(0);
-            /* Triggers endless floating animation after sliding in */
-            animation: float 6s ease-in-out infinite alternate 1.2s;
-        }
-
-        /* Endless Floating Keyframes */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Mobile View Responsive Tweaks */
-        @media (max-width: 1000px) {
-            .content-wrapper {
-                padding: 3rem 2rem;
-                gap: 2rem;
-            }
-            .left-col {
-                padding-right: 2rem;
-            }
-            .left-col h1 {
-                font-size: 2.8rem;
-            }
-            .right-col h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sticky-bar { 
-                z-index: 3;
-                padding: 1rem 1.5rem; 
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            .brand-left {
-                align-items: center;
-            }
-            .brand-name { font-size: 1.1rem; }
-            .brand-title { font-size: 0.65rem; }
-            .brand-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            .contact-link { font-size: 0.75rem; }
-            
-            .content-wrapper {
-                flex-direction: column; /* Stacks to 1 column on mobile */
-                gap: 1.5rem;
-                padding: 2.5rem 1.5rem;
-                text-align: center;
-                margin-top: 5rem; /* Account for taller sticky header */
-            }
-
-            .left-col {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Divider moves to bottom */
-                padding-right: 0;
-                padding-bottom: 1.5rem;
-                text-align: center; /* Centers heading on mobile */
-                width: 100%;
-            }
-
-            .left-col h1 {
-                font-size: 2rem; /* Smaller font on mobile as requested */
-                background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-
-            .right-col {
-                text-align: center; /* Centers details on mobile */
-                width: 100%;
-            }
-
-            .right-col ul li {
-                padding-left: 0;
-            }
-            .right-col ul li::before {
-                display: none; /* Hide bullets on mobile centered view */
-            }
-            
-            .right-col h2 { font-size: 1.6rem; }
-            .right-col .subtitle { font-size: 0.9rem; }
-            .right-col p, .right-col ul li { font-size: 1rem; }
-        }
-    </style>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYSEL0RPYX"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F9;--surface:#FFFFFF;--ink:#14213D;--muted:#53607A;--line:#D5DBE7;--accent:#3B4BDB;--accent-ink:#fff;--ok:#0B8A7A;--warn:#B7600B;
+--head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--body:'Figtree','Segoe UI',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1526;--surface:#18203A;--ink:#E8ECF8;--muted:#9AA6C4;--line:#2A3558;--accent:#8E9BFF;--accent-ink:#0F1526;--ok:#4FD1BC;--warn:#F0A75B}}
+:root[data-theme="dark"]{--bg:#0F1526;--surface:#18203A;--ink:#E8ECF8;--muted:#9AA6C4;--line:#2A3558;--accent:#8E9BFF;--accent-ink:#0F1526;--ok:#4FD1BC;--warn:#F0A75B}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:58px}
+.brand{font:700 1.1rem var(--head);text-decoration:none}
+nav{display:flex;gap:1.25rem;font-size:.95rem;overflow-x:auto}
+nav a{text-decoration:none;color:var(--muted);white-space:nowrap}nav a:hover{color:var(--ink)}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4rem);letter-spacing:-.02em;font-weight:700}
+h2{font-size:clamp(1.7rem,3.2vw,2.4rem);letter-spacing:-.01em;margin-bottom:.5rem}
+section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.lede{color:var(--muted);max-width:60ch;margin:.5rem 0 0}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding:clamp(2.5rem,6vw,4.5rem) 0}
+.hero p{max-width:52ch;color:var(--muted);font-size:1.15rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.btn{display:inline-block;padding:.75rem 1.2rem;border-radius:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;color:var(--muted);font-size:.95rem;margin-top:1.25rem}
+/* simulator */
+.sim{background:var(--surface);border:1.5px solid var(--ink);border-radius:18px;padding:1.25rem;box-shadow:8px 8px 0 var(--accent)}
+.sim h3{font-size:1.15rem}
+.sim .sub{color:var(--muted);font-size:.88rem;margin:.15rem 0 1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.9rem}
+label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.25rem}
+select,input[type=range]{width:100%}
+select{padding:.55rem;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input[type=range]{accent-color:var(--accent)}
+.amt{font:700 1.7rem var(--head)}
+.out{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--line);padding:.7rem 0 0;font-size:.95rem}
+.out b{font-family:var(--head);font-size:1.2rem}
+.checks{list-style:none;margin:.9rem 0;padding:0;display:grid;gap:.4rem;font-size:.92rem}
+.checks li{display:flex;gap:.55rem;align-items:center}
+.dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--ok);flex:none;transition:background .3s}
+.checks li.warn .dot{background:var(--warn)}
+pre{margin:0;background:var(--ink);color:var(--bg);padding:.85rem;border-radius:10px;font:.78rem/1.55 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;white-space:pre}
+.note{font-size:.78rem;color:var(--muted);margin:.6rem 0 0}
+/* impact */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem 1.5rem;margin-top:2rem}
+.stat b{display:block;font:700 clamp(2.2rem,4vw,3rem) var(--head);color:var(--accent);line-height:1}
+.stat span{display:block;margin-top:.4rem;color:var(--muted);font-size:.95rem}
+/* experience */
+.job{display:grid;grid-template-columns:200px 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+.job:first-of-type{margin-top:1.5rem}
+.job .when{color:var(--muted);font-size:.95rem}
+.job h3{font-size:1.3rem}
+.job ul{margin:.8rem 0 0;padding-left:1.2rem;max-width:70ch}.job li{margin-bottom:.45rem}
+/* case studies */
+details{border-top:1px solid var(--line);padding:1.1rem 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary h3{font-size:1.35rem}
+summary .tag{color:var(--muted);font-size:.9rem;white-space:nowrap}
+summary::after{content:"+";font:600 1.5rem var(--head);color:var(--accent);margin-left:.5rem;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+.cs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem}
+.cs h4{margin:0 0 .3rem;font:700 1rem var(--head)}.cs p{margin:0;color:var(--muted);font-size:.98rem}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.75rem;margin-top:1.75rem}
+.skills h3{font-size:1.05rem;margin-bottom:.5rem}
+.skills p{margin:0;color:var(--muted);font-size:.98rem}
+.two{display:grid;grid-template-columns:1fr;max-width:70ch;gap:clamp(1.5rem,4vw,3rem);margin-top:1.5rem}
+.two h3{font-size:1.2rem;margin-bottom:.3rem}.two p{margin:.2rem 0 1rem;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-top:1rem}
+.tile{border-left:3px solid var(--accent);padding:.1rem 0 .1rem 1rem}
+.tile .ico{display:inline-flex;color:var(--accent);margin-bottom:.35rem}
+.tile h4{margin:0;font:700 1.05rem var(--head)}.tile p{margin:.25rem 0 0;color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem}
+.chip{font-size:.82rem;font-weight:600;padding:.15rem .6rem;border-radius:99px;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.fl{margin:1.75rem 0 .6rem;font:700 1.05rem var(--head)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.steps li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;margin:0}
+.steps li:not(:last-child)::after{content:"";position:absolute;right:-.5rem;top:50%;width:.5rem;height:2px;background:var(--accent)}
+.steps b{display:block;font:700 .98rem var(--head)}.steps span{font-size:.85rem;color:var(--muted);line-height:1.35;display:block}
+.xp{list-style:none;margin:1.5rem 0 0;padding:0}
+.xp li{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.xp li:last-child{border-bottom:1px solid var(--line)}
+.xp h3{font-size:1.2rem}.xp p{grid-column:1;margin:0;color:var(--muted);max-width:62ch;font-size:.98rem}
+.st{grid-row:1/3;grid-column:2;align-self:start;font-size:.85rem;font-weight:600;padding:.2rem .7rem;border-radius:99px;border:1.5px solid var(--accent);color:var(--accent);white-space:nowrap}
+.bar{grid-column:1/3;display:flex;gap:.3rem;margin-top:.4rem}.bar i{height:5px;flex:1;max-width:46px;border-radius:3px;background:var(--line)}.bar i.on{background:var(--accent)}
+@media (max-width:820px){.steps{grid-template-columns:1fr}.steps li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-.5rem;width:2px;height:.5rem}}
+.plist{display:grid;gap:clamp(2.5rem,6vw,4.5rem);margin-top:2.25rem}
+.proj{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.proj:nth-child(even) .shot{order:2}
+.shot{margin:0}.shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;border:1.5px solid var(--ink)}
+.ph{aspect-ratio:16/10;border:2px dashed var(--accent);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;text-align:center;padding:1rem;color:var(--accent);background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--accent) 7%,transparent) 14px 28px)}
+.ph b{font:700 1.1rem var(--head)}.ph span{color:var(--muted);font-size:.9rem}
+.ptag{margin:0 0 .4rem;color:var(--muted);font-size:.95rem}
+.pt h3{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.01em}
+.pt>p:not(.ptag){margin:.7rem 0 0;color:var(--muted);max-width:52ch}
+.pstat{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line)}
+.pstat b{display:block;font:700 clamp(1.8rem,3.4vw,2.6rem) var(--head);color:var(--accent);line-height:1.05}
+.pstat span{color:var(--muted);font-size:.95rem}
+.edu span {font:700 clamp(1rem,2.2vw,1.2rem) var(--head);color:var(--accent);line-height:1.05}
+@media (max-width:820px){.proj{grid-template-columns:1fr}.proj:nth-child(even) .shot{order:0}}
+.ben{margin:.9rem 0 .2rem;font-size:.9rem;color:var(--muted)}.ben b{display:block;color:var(--ink);font:700 1.05rem var(--head)}
+.ill{display:block;width:100%;max-width:340px;margin:.9rem auto 0;color:var(--ink)}
+.pk{animation:mv 2.8s ease-in-out infinite}
+@keyframes mv{0%{transform:translateX(0);opacity:1}85%{transform:translateX(140px);opacity:1}100%{transform:translateX(140px);opacity:0}}
+.flash{animation:fl 1.2s ease}@keyframes fl{0%,100%{box-shadow:8px 8px 0 var(--accent)}40%{box-shadow:8px 8px 0 var(--ok),0 0 0 4px var(--ok)}}
+.rp{list-style:none;margin:1.75rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.rp li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem;display:grid;gap:.35rem}
+.rp .top{display:flex;justify-content:space-between;gap:.75rem;align-items:center;flex-wrap:wrap}
+.rp h3{font-size:1.15rem}.rp .amtl{font:700 1.8rem var(--head);line-height:1.1}
+.rp .meta2{color:var(--muted);font-size:.9rem}
+.rp .btn{justify-self:start;margin-top:.6rem;cursor:pointer;font:inherit;font-weight:600}
+@media (prefers-reduced-motion:reduce){.pk,.flash{animation:none}}
+.rh{margin:1.1rem 0 .1rem;padding-top:.9rem;border-top:1px solid var(--line);font:700 .9rem var(--head)}
+.sim .rp{grid-template-columns:1fr;gap:.5rem;margin:.5rem 0 0}
+.sim .rp li{padding:.6rem .75rem;gap:.15rem;border-radius:10px;background:var(--bg)}
+.sim .rp h3{font-size:.85rem}.sim .rp .amtl{font-size:1rem}.sim .rp .meta2{font-size:.75rem}
+.sim .rp .chip{font-size:.7rem;padding:.1rem .5rem}
+.sim .rp .btn{padding:.25rem .7rem;font-size:.78rem;margin-top:.3rem;border-radius:8px}
+.explore{margin:1.1rem 0 0}.explore a{font-weight:600;color:var(--accent);text-underline-offset:4px}
+footer{padding:3rem 0;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+.links{display:flex;gap:1rem 1.5rem;flex-wrap:wrap;margin-top:1.25rem}
+.links a{font-weight:600}
+.tg{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:.3rem .6rem;font:inherit;font-size:.85rem;cursor:pointer}
+@media (max-width:820px){.hero,.two,.cs{grid-template-columns:1fr}.job{grid-template-columns:1fr;gap:.5rem}summary{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WYSEL0RPYX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -356,192 +156,170 @@
 </script>
 </head>
 <body>
+<header><div class="wrap"><a class="brand" href="#top">Himanshu Saini</a>
+<nav aria-label="Sections"><a href="#impact">Impact</a><a href="#work">Experience</a><a href="#cases">Case studies</a><a href="#projects">Projects</a><a href="#exploring">Exploring</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+<button class="tg" id="tg" aria-label="Toggle light or dark theme">Theme</button></div></header>
 
-    <!-- Sticky Header (Generated Dynamically) -->
-    <header class="sticky-bar" id="header-container"></header>
+<main id="top" class="wrap">
+<div class="hero">
+<div>
+<h1>I turn complex money-movement into products people trust.</h1>
+<p>Product Manager with 3+ years owning outward remittance and trade finance at ICICI Bank, serving 45,000+ customers. I pair payments depth (SWIFT, FX, compliance) with data and AI skills to build the next generation of banking products.</p>
+<div class="btns"><a class="btn p" href="#cases">See case studies</a><a class="btn" href="#contact">Get in touch</a></div>
+<div class="meta"><span>Ahmedabad, India</span><span>Open to AI Product Manager roles</span></div>
+</div>
 
-    <!-- Scroll Container (Generated Dynamically) -->
-    <div class="container" id="slides-container"></div>
+<div class="sim" id="sim" aria-labelledby="simh">
+<h3 id="simh">Try a cross-border payment</h3>
+<p class="sub">A simplified import payment flow, like the ones I own. Names, rates and fees are sample values.</p>
+<div class="row">
+<div><label for="cur">Send to</label><select id="cur"><option value="USD">United States (USD)</option><option value="EUR">Eurozone (EUR)</option><option value="GBP">United Kingdom (GBP)</option><option value="AED">UAE (AED)</option><option value="SGD">Singapore (SGD)</option></select></div>
+<div><label>Remittance amount</label><div class="amt" id="amt"></div></div>
+</div>
+<label for="rng">Adjust amount (INR)</label>
+<input type="range" id="rng" min="50000" max="25000000" step="50000" value="1000000">
+<div class="ben"><span>Beneficiary</span><b id="ben"></b></div>
+<ul class="checks" aria-label="Payment checks">
+<li><span class="dot"></span>Proof of import submitted and verified</li>
+<li><span class="dot"></span>Sanctions screening clear</li>
+<li><span class="dot"></span>FX rate booked</li>
+<li><span class="dot"></span>SWIFT payment sent</li></ul>
+<div class="out"><span>Beneficiary receives</span><b id="recv"></b></div>
+<div class="out"><span>Sample fee</span><span id="fee"></span></div>
+<div class="out"><span>Deal rate</span><span id="rate"></span></div>
+<svg class="ill" viewBox="0 0 320 96" role="img" aria-label="Outward remittance sent from the remitter's bank over the SWIFT channel and received by the beneficiary bank">
+<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="16" width="86" height="46" rx="8"/><rect x="230" y="16" width="86" height="46" rx="8"/><circle cx="160" cy="39" r="21"/><path d="M90 39h49M181 39h49" stroke-dasharray="4 4" stroke="var(--accent)"/></g>
+<g fill="currentColor" font-family="var(--body)" font-size="10" text-anchor="middle"><text x="47" y="36">Remitter</text><text x="47" y="50">bank, India</text><text x="273" y="36">Beneficiary</text><text x="273" y="50">bank</text><text x="160" y="43" font-weight="700">SWIFT</text></g>
+<circle class="pk" cx="90" cy="39" r="4.5" fill="var(--accent)"/>
+<text x="273" y="82" text-anchor="middle" font-family="var(--body)" font-size="10.5" font-weight="700" fill="var(--ok)">✓ Received</text>
+<text x="47" y="82" text-anchor="middle" font-family="var(--body)" font-size="10.5" fill="currentColor">Outward remittance</text></svg>
+<p class="rh">Recent payments</p>
+<ul class="rp" id="rp"></ul>
+<p class="note">Illustrative only. Not a real quote or payment.</p>
+</div>
+</div>
 
-    <!-- JavaScript for Dynamic Rendering and Animations -->
-    <script>
-        // ==========================================
-        // 📁 PORTFOLIO JSON DATA
-        // Edit this section to change website content!
-        // ==========================================
-        const portfolioData = {
-            header: {
-                name: "Himanshu Saini",
-                title: "Software Product Manager",
-                email: "himanshusaini9683@gmail.com",
-                linkedin: "https://linkedin.com/in/himanshu-saini2023",
-                phone: "Alwar, Rajasthan"
-            },
-            slides: [
-                {
-                    id: "hero",
-                    bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Himanshu<br>Saini",
-                    rightContent: `
-                        <h2>Product Manager</h2>
-                        <div class="subtitle">Data-Driven & User-First</div>
-                        <p>Hi, I'm Himanshu Saini. With 3 years of experience in buidling Trade Finance Digital Solutions and solving complex business problems using product analytics in digital banking, Graduated from <strong> MNNIT Allahabad</strong>, I enjoy building impactful products backed by data. I combine my product instincts, technical acumen (MERN, Python, SQL), and a love for problem-solving to deliver measurable impact and business value.</p>
-                    `
-                },
-                {
-                    id: "exp1",
-                    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Experience",
-                    rightContent: `
-                        <h2>ICICI Bank </h2>
-                        <div class="subtitle">Product Manager | June 2023 - Present</div>
-                        <ul>
-                            <li>Building Outward Remittance and Trade Finance Digital Solutions used across India by 45,000+ Customers.</li>
-                            <li>Launched initiatives that led to 10% increase in digital engagement and 17% growth in transaction volume.</li>
-                            <li>Improved feature adoption by 12% and reduced drop-off rate by 30% through onboarding UX revamp and funnel optimization using strategy building.</li>
-                            <li>Automated manual work for High volume transactions via ERP integration with H2H setup and file upload method.</li>
-                            <li> Integrated Google Analytics to monitor product health metrics like MAUs, churn and conversion rates. </li>
-                        </ul>
-                    `
-                },
-                {
-                    id: "exp2",
-                    bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Experience",
-                    rightContent: `
-                        <h2>Cograd</h2>
-                        <div class="subtitle">Full Stack Developer Intern | Mar 2022 - May 2022</div>
-                        <p>Built a comprehensive web platform from scratch using the MERN stack. Developed complex backend APIs and implemented a highly responsive frontend using React, bridging business goals with seamless engineering execution.</p>
-                    `
-                },
-                {
-                    id: "skills",
-                    bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Core<br>Skills",
-                    rightContent: `
-                        <ul>
-                            <li><span class="highlight">Product Management:</span> Cross-Functional Collaboration, Stakeholder Management, Feature Prioritization, Product Metrics Analysis, KPI & Funnel Analysis</li>
-                            <li><span class="highlight">Data Science:</span> Predictive Modeling, Machine Learning, EDA & Feature Engineering</li>
-                            <li><span class="highlight">Technical Stack:</span> Jira ,Advance Excel, Figma, Postman, Google Analytics, Python, SQL, Pandas, MERN Stack (MongoDB, Express, React, Node)</li>
-                            <li><span class="highlight" >Others:</span> Problem-Solving, Agile/Scrum, A/B Testing, API Testing, User-Acceptance-Testing</li>
-                        </ul>
-                    `
-                },
-                                {
-                    id: "edu",
-                    bgImage: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Education",
-                    rightContent: `
-                        <h2>MNNIT Allahabad</h2>
-                        <div class="subtitle">B.Tech in Biotechnology | 2019 - 2023</div>
-                        <p><strong>CPI: 8.57 / 10</strong></p>
-                        <p>Cultivated a strong mathematical and technical foundation, applying analytical research methodologies to modern, data-driven software architecture.</p>
-                    `
-                },
-                {
-                    id: "projects",
-                    bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Key<br>Projects",
-                    rightContent: `
-                        <h2>AI Powerd Ecommerce App:</h2>
-                        <p>Built a Flipkart-clone shopping app with an AI-powered virtual trial room enabling users to try clothes on themselves before buying, improving purchase confidence and decision-making.</p>
-                        <br>
-                        <h2>Docking Automation (Bioinformatics + ML)</h2>
-                        <p>Automated 95%of manual workflows and implemented Python-based models to predict compound interaction, effectiveness, solubility and other features to find cure of Alzheimer.</p>
-                    `
-                },
-                {
-                    id: "casestudies",
-                    bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Case<br>Studies",
-                    rightContent: `
-                        <ul>
-                            <li><span class="highlight">Time is Money:</span> Reduced unnecessary clicks by autofilling requests via machine learning and historical data, significantly saving customer time.</li>
-                            <li><span class="highlight">Save Paper, Save Trees:</span> Cut down physical documentation to a minimum by automating digital modes, reducing errors and physical maintenance.</li>
-                            <li><span class="highlight">Scalability is Profitability:</span> Based on product insights and market fit, scaled a successful single-service model to other domains to create a key differentiator.</li>
-                            <li><span class="highlight">User Onboarding Optimization:</span> Redesigned onboarding with self-onboarding capabilities, increasing the active userbase by 20%.</li>
-                        </ul>
-                    `
-                },
-                {
-                    id: "certs",
-                    bgImage: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=2000&q=80",
-                    leftTitle: "Licenses &<br>Certs",
-                    rightContent: `
-                        <ul>
-                            <li><span class="highlight">Certificate Program in Data Sciences in Banking</span></li>
-                            <li><span class="highlight">Prompt Design in Vertex AI</span> - Google Cloud</li>
-                            <li><span class="highlight">Python for Everybody Specialization</span></li>
-                            <li><span class="highlight">Certificate in International Trade Finance</span></li>
-                        </ul>
-                    `
-                }
+<section id="impact">
+<h2>Impact, in numbers</h2>
+<p class="lede">I define KPIs on the roadmap, track them after launch, and report what moved.</p>
+<div class="stats">
+<div class="stat"><b>45K+</b><span>customers on the products I own</span></div>
+<div class="stat"><b>+17%</b><span>cross-border transaction volume</span></div>
+<div class="stat"><b>+50%</b><span>product usage after fixing remittance friction</span></div>
+<div class="stat"><b>−30%</b><span>onboarding drop-off rate</span></div>
+<div class="stat"><b>+12%</b><span>feature adoption</span></div>
+<div class="stat"><b>+10%</b><span>digital engagement</span></div>
+</div>
+</section>
 
-            ]
-        };
+<section id="work">
+<h2>Experience</h2>
+<div class="job"><div class="when">June 2023 – Present<br>Ahmedabad</div><div>
+<h3>Software Product Manager, ICICI Bank</h3>
+<div class="tiles"><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><h4>Strategy and roadmap</h4><p>Own Outward Remittance and Trade Finance, including FX management and compliance.</p><div class="chips"><span class="chip">45K+ customers</span></div></div><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><h4>ERP integrations</h4><p>Built API and file-upload (H2H) payment initiation with engineering, operations and compliance.</p><div class="chips"><span class="chip">Scaled without extra headcount</span></div></div><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><h4>Funnel deep-dives</h4><p>Found drop-off points and redesigned onboarding.</p><div class="chips"><span class="chip">+12% adoption</span><span class="chip">−30% drop-off</span></div></div><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-9M15 7h5v5"/></svg></span><h4>Live dashboards</h4><p>Google Analytics views of MAUs, churn and conversion after launch.</p><div class="chips"><span class="chip">+17% volume</span><span class="chip">+10% engagement</span></div></div><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></span><h4>Requirements to sprints</h4><p>User stories, acceptance criteria, sprint planning and backlog in Jira.</p></div><div class="tile"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h7a2 2 0 012 2v13a2 2 0 00-2-2H3zM21 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg></span><h4>SME enablement</h4><p>Trained internal teams and regional operations on how the products work and why.</p></div></div>
+<p class="fl">How I run a feature</p>
+<ol class="steps"><li><b>Research</b><span>User analytics and behavior</span></li><li><b>Define</b><span>Requirements and stories</span></li><li><b>Build</b><span>Sprints in Jira</span></li><li><b>Launch</b><span>Readiness and SME training</span></li><li><b>Measure</b><span>Dashboards and KPIs</span></li></ol></div></div>
+<div class="job"><div class="when">Mar 2022 – May 2022<br>Allahabad</div><div>
+<h3>Full Stack Developer Intern, Cograd</h3>
+<ul><li>Built a MERN-stack web platform for an early-stage startup, improving load speed and usability.</li>
+<li>Designed REST APIs and used behavioral insights to improve product interactions.</li></ul></div></div>
+</section>
 
-        // ==========================================
-        // ⚙️ RENDERING ENGINE & ANIMATIONS
-        // ==========================================
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // 1. Render Header
-            const headerContainer = document.getElementById('header-container');
-            headerContainer.innerHTML = `
-                <div class="brand-left">
-                    <div class="brand-name">${portfolioData.header.name}</div>
-                    <div class="brand-title">${portfolioData.header.title}</div>
-                </div>
-                <div class="brand-right">
-                    <a href="mailto:${portfolioData.header.email}" class="contact-link" onclick="gtag('event', 'email_click', { event_category: 'Engagement', event_label: 'Email Click' })">himanshusaini9683@gmail.com</a>
-                    <a href="${portfolioData.header.linkedin}" target="_blank" class="contact-link" onclick="gtag('event', 'linkedin_click', { event_category: 'Engagement', event_label: 'LinkedIn Visit' })">LinkedIn</a>
-                    <span href="blank" class="contact-link">${portfolioData.header.phone}</span>
-                </div>
-            `;
+<section id="cases">
+<h2>Case studies</h2>
+<p class="lede">Open each one for the problem, what I did and the result.</p>
+<div style="margin-top:1.5rem">
+<details open><summary><h3>Fixing friction in cross-border remittance</h3><span class="tag">Analytics, UX</span></summary>
+<div class="cs"><div><h4>Problem</h4><p>Customers started remittance requests but many dropped off before completing them.</p></div>
+<div><h4>What I did</h4><p>Ran funnel and user-behavior analysis to find drop-off points, then redesigned onboarding and cut documentation steps and clicks by 30%.</p></div>
+<div><h4>Result</h4><p>Adoption up 12%, drop-off down 30%, and product usage up 50% across 45,000+ customers.</p></div></div><p class="explore"><!-- Replace href with your case study link --><a href="https://www.youtube.com/shorts/V_JN86l0h3A" target="_blank" rel="noopener"onclick="gtag('event', 'page_view', { event_category: 'Engagement', event_label: `Viewed Slide: PAY AGAIN VIDEO` });" >Explore</a></p></details>
 
-            // 2. Render Slides
-            const slidesContainer = document.getElementById('slides-container');
-            
-            portfolioData.slides.forEach(slideData => {
-                const slideHTML = `
-                    <section class="slide" id="${slideData.id}">
-                        <div class="slide-bg" style="background-image: url('${slideData.bgImage}');"></div>
-                        <div class="content-wrapper">
-                            <div class="left-col">
-                                <h1>${slideData.leftTitle}</h1>
-                            </div>
-                            <div class="right-col">
-                                ${slideData.rightContent}
-                            </div>
-                        </div>
-                    </section>
-                `;
-                slidesContainer.insertAdjacentHTML('beforeend', slideHTML);
-            });
+<details open><summary><h3>How would you improve instageram reels</h3><span class="tag">Analytics, UX</span></summary>
+<div class="cs"><div><h4>Problem</h4><p>Instragram growth number are stuck in the past, watch time has decreased, how to improve reels?</p></div>
+<div><h4>What I did</h4><p>Done platform and user-behavior analysis to find drop-off/pain points, propos new features/ solution to improve platform retention. </p></div>
+<div><h4>Success Metrics</h4><p>North Star Metrics, Creators Retention Rate, Average Watch Time, Daily Active Users </p></div></div>
+<p class="explore"><a href="./instagram_reels_case_study.html" target="_blank" rel="noopener" onclick="gtag('event', 'page_view', { event_category: 'Engagement', event_label: 'Viewed Slide: instagram_reels_case_study' })">Explore</a></p></details>
 
-            // 3. Initialize Animations (Intersection Observer)
-            const slides = document.querySelectorAll('.slide');
-            const observerOptions = {
-                root: slidesContainer,
-                threshold: 0.55 // Triggers when 55% of the slide is in view
-            };
+<details><summary><h3>API and H2H payments for ERP clients</h3><span class="tag">Integrations, Compliance</span></summary>
+<div class="cs"><div><h4>Problem</h4><p>High-volume corporate clients needed to send payments straight from their ERP systems.</p></div>
+<div><h4>What I did</h4><p>Worked with engineering, operations and compliance to define API and file-upload initiation flows with built-in compliance checks.</p></div>
+<div><h4>Result</h4><p>ERP transaction processing scaled without adding headcount, and platform reliability improved.</p></div></div>
+<!-- <p class="explore">Replace href with your case study link<a href="#" data-ph target="_blank" rel="noopener">Explore</a></p> -->
+</details>
+<details><summary><h3>Compliance copilot for trade finance (concept)</h3><span class="tag">AI product idea</span></summary>
+<div class="cs"><div><h4>Problem</h4><p>Ops teams read long trade documents by hand to check them against compliance rules.</p></div>
+<div><h4>Concept</h4><p>An LLM assistant that categorise documents and extracts fields, flags mismatches and cites the rule behind each flag, perform sanction screening, give risk score and the final decision, A human verfiies decision, initate payments.</p></div>
+<div><h4>Success metrics</h4><p>Review time per document, false-flag rate and share of flags accepted by reviewers. This is a sample concept, not a shipped product.</p></div></div>
+<!-- <p class="explore">Replace href with your case study link<a href="#" data-ph target="_blank" rel="noopener">Explore</a></p> -->
+</details>
+</div>
+</section>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        gtag('event', 'page_view', { event_category: 'Engagement', event_label: `Viewed Slide: ${entry.target.id}` });
-                    } else {
-                        // Reset animation when scrolling away
-                        entry.target.classList.remove('is-visible');
-                    }
-                });
-            }, observerOptions);
+<section id="projects">
+<h2>Projects</h2>
+<p class="lede">Side projects where I built the product, not only specified it.</p>
+<div class="plist"><article class="proj">
+<figure class="shot"><!-- IMAGE SLOT 1: replace the div.ph below with <img src="YOUR_IMAGE_DATA_URI" alt="Screenshot of the virtual trial room"> -->
+<!-- <div class="ph"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/></svg><b>Image slot 1</b><span>Add a screenshot or diagram, about 1200×750</span></div> -->
+ <img src="./AIEcommerce.png" alt="Screenshot of the virtual trial room">
+</figure>
+<div class="pt"><p class="ptag">Flipkart clone with a virtual trial room</p><h3>AI-powered e-commerce app</h3><p>A shopping app where users try clothes on virtually before buying, so they feel more confident about what they order.</p><div class="chips"><span class="chip">AI virtual try-on</span><span class="chip">E-commerce</span><span class="chip">Product design</span></div>
+<div class="pstat"><b>Try before you buy</b><span>builds purchase confidence and better decisions</span></div></div></article><article class="proj">
+<figure class="shot"><!-- IMAGE SLOT 2: replace the div.ph below with <img src="YOUR_IMAGE_DATA_URI" alt="Diagram of the docking automation pipeline"> -->
+<!-- <div class="ph"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/></svg><b>Image slot 2</b><span>Add a screenshot or diagram, about 1200×750</span></div> -->
+ <img src="./DockingAutomationimage.png" alt="Diagram of the docking automation pipeline">
+</figure>
+<div class="pt"><p class="ptag">Bioinformatics and machine learning, for Alzheimer's drug discovery research</p><h3>Docking automation</h3><p>Automated manual docking workflows and built Python models that predict how compounds interact, how effective they are and how soluble they are.</p><div class="chips"><span class="chip">Python</span><span class="chip">Machine learning</span><span class="chip">Bioinformatics</span></div>
+<div class="pstat"><b>95%</b><span>of manual workflows automated</span></div></div></article></div>
+</section>
 
-            slides.forEach(slide => {
-                observer.observe(slide);
-            });
-        });
-    </script>
+<section id="exploring">
+<h2>Currently exploring</h2>
+<p class="lede">Where I'm taking payments product skills next: building and shipping AI-native banking features.</p>
+<ul class="xp"><li><h3>Agentic workflows for payment operations</h3><span class="st">Prototyping</span><p>Prototyping an assistant that drafts and checks remittance cases, with a human approving each step.</p><div class="bar" aria-label="Progress 3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></div></li><li><h3>Retrieval over compliance documents</h3><span class="st">Learning</span><p>Learning how to ground LLM answers in policy text and show the source behind each answer.</p><div class="bar" aria-label="Progress 2 of 4"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div></li><li><h3>Evals and guardrails for regulated AI</h3><span class="st">Learning</span><p>Studying how to test model quality and keep AI features safe in banking.</p><div class="bar" aria-label="Progress 2 of 4"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div></li><li><h3>Product metrics for AI features</h3><span class="st">Reading</span><p>Defining quality, trust and adoption metrics beyond clicks and conversion.</p><div class="bar" aria-label="Progress 1 of 4"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></li></ul>
+</section>
+
+<section id="skills">
+<h2>Skills and toolkit</h2>
+<div class="skills">
+<div><h3>Product</h3><p>Strategy and roadmap, prioritization, requirements and user stories, KPI definition, A/B testing, funnel analysis, Agile/Scrum</p></div>
+<div><h3>Payments domain</h3><p>Cross-border payments, SWIFT formats, FX management, trade finance compliance, ERP and H2H integration, payment initiation APIs</p></div>
+<div><h3>Data and AI</h3><p>Python, SQL, Power BI, Google Analytics, Advanced Excel, Vertex AI prompt design, GitHub Copilot</p></div>
+<div><h3>Engineering</h3><p>JavaScript, C++, C, REST APIs, Postman, Jira</p></div>
+</div>
+<div class="two">
+<div class="edu"><h2>Education and certifications</h2>
+<p><b>B.Tech, Biotechnology</b>, <span> MNNIT Allahabad </span> , 2019–2023, CPI 8.57</p>
+<p>International Trade Finance, IIBF Mumbai<br>Data Sciences in Banking, ICICI Bank<br>Prompt Design in Vertex AI, Google Cloud<br>Python for Everybody, University of Michigan</p></div>
+</div>
+</section>
+</main>
+
+<footer id="contact"><div class="wrap">
+<h2>Let's build the next payments product together.</h2>
+<p class="lede">Hiring for an AI Product Manager role in payments, fintech or banking? I'd like to hear about it.</p>
+<div class="links"><a href="mailto:himanshusaini9683@gmail.com" onclick="gtag('event', 'email_click', { event_category: 'Engagement', event_label: 'Email Click' })">himanshusaini9683@gmail.com</a><a href="https://linkedin.com/in/himanshu-saini2023" onclick="gtag('event', 'linkedin_click', { event_category: 'Engagement', event_label: 'LinkedIn Visit' })">LinkedIn</a><a href="https://techimanshu8.github.io" onclick="gtag('event', 'page_view', { event_category: 'Engagement', event_label: `Viewed Slide: Github` });" >GitHub portfolio</a></div>
+</div></footer>
+
+<script>
+const R={USD:83.2,EUR:90.1,GBP:105.4,AED:22.65,SGD:62},$=id=>document.getElementById(id);
+const B={USD:'Pacific Steel Supply Inc., Houston',EUR:'Orion Components GmbH, Frankfurt',GBP:'Thames Machinery Ltd, Manchester',AED:'Gulf Trade FZE, Dubai',SGD:'Lion Marine Parts Pte Ltd, Singapore'};
+const fmt=n=>n.toLocaleString('en-IN',{maximumFractionDigits:0});
+const calc=(c,inr)=>{const fee=Math.max(500,inr*0.001);return{fee,got:Math.round((inr-fee)/R[c])}};
+function upd(){
+ const c=$('cur').value,inr=+$('rng').value,k=calc(c,inr);
+ $('amt').textContent='₹'+fmt(inr);
+ $('ben').textContent=B[c];
+ $('recv').textContent=k.got.toLocaleString('en-US')+' '+c;
+ $('fee').textContent='₹'+fmt(k.fee);
+ $('rate').textContent='1 '+c+' = ₹'+R[c];
+}
+$('cur').onchange=upd;$('rng').oninput=upd;upd();
+const P=[{c:'EUR',inr:1700000,d:'02 Oct 2026',ref:'OR-26-0412'},{c:'USD',inr:4200000,d:'26 Sep 2026',ref:'OR-26-0397'}];
+$('rp').innerHTML=P.map((x,i)=>{const k=calc(x.c,x.inr);return `<li><div class="top"><h3>${B[x.c]}</h3><span class="chip">Received by beneficiary bank</span></div><div class="amtl">${k.got.toLocaleString('en-US')} ${x.c}</div><div class="meta2">Sent ₹${fmt(x.inr)} · ${x.d} · Ref ${x.ref}</div><button class="btn p" data-i="${i}">Pay again</button></li>`}).join('');
+$('rp').onclick=e=>{const b=e.target.closest('button');if(!b)return;const x=P[+b.dataset.i];$('cur').value=x.c;$('rng').value=x.inr;upd();const m=$('sim');m.scrollIntoView({behavior:'smooth',block:'nearest'});m.classList.remove('flash');void m.offsetWidth;m.classList.add('flash')};
+document.addEventListener('click',e=>{if(e.target.closest('a[data-ph]'))e.preventDefault()});
+$('tg').onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=d?'light':'dark'};
+</script>
 </body>
 </html>
